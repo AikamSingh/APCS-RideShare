@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 /**
  * write description
  *
@@ -6,7 +8,17 @@
  */
 
 public class Station {
-    public static void main(String[] args) {
+    ArrayList<Passenger> passengers;
 
+    public Station(){
+        passengers = new ArrayList<>();
+    }
+
+    public int getNumPassengers(){
+        return passengers.size();
+    }
+
+    public void addPassenger(Passenger passenger){
+        passengers.add(passenger);
     }
 }
