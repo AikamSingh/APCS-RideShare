@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Arrays;
 
 /**
  * write description
@@ -10,7 +11,7 @@ public class Station {
     ArrayList<Passenger> passengers;
     private boolean hasPassenger;
     private int stationNum;
-    private static int lastStationNum = 0;
+    private static int lastStationNum = -1;
 
     public Station(){
         passengers = new ArrayList<>();
@@ -27,6 +28,18 @@ public class Station {
         passengers.add(passenger);
     }
 
+    public ArrayList<Passenger> getWaitingPassengers(){
+        ArrayList<Passenger> waitingPassengers = new ArrayList<>();
+
+        waitingPassengers.addAll(passengers);
+
+        return waitingPassengers;
+    }
+
+    public void removePassenger(Passenger passenger){
+        passengers.remove(passenger);
+    }
+
     public boolean hasPassenger(){
         if(passengers.size() > 0){
             return true;
@@ -38,6 +51,10 @@ public class Station {
 
     public String toString(){
         String result = "Station #" + stationNum + " with size "+ passengers.size() + ":\n";
+
+        if(passengers.size() == 0){
+            result += "no passengers";
+        }
 
         for(int i = 0; i < passengers.size(); i++){
             if(i < passengers.size() - 1){
