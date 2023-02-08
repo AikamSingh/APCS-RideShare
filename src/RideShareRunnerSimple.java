@@ -5,7 +5,7 @@
  * @version 1/23/23
  */
 
-public class RideShareRunner {
+public class RideShareRunnerSimple {
     public static void main(String[] args) {
 
         //creates passengers, cars, anc stations to set up testing scenario
@@ -36,11 +36,11 @@ public class RideShareRunner {
         car1.move();
 
         System.out.println("Testing car at station 1: picking up passenger \n ----------------------------------------------------------------");
-        System.out.println("adding 3 new passenger to station 1");
+        System.out.println("adding 3 new passengers to station 1");
         s2.addPassenger(p2);
         s2.addPassenger(p3);
         s2.addPassenger(p4);
-        System.out.println("Printing out s2 to see if there are any passengers");
+        System.out.println("Printing out station to see if there are any passengers");
         System.out.println(s2);
         System.out.println("Picking up passenger");
         System.out.println(car1.pickUpPassengers(s2));
@@ -48,13 +48,12 @@ public class RideShareRunner {
         System.out.println(s2);
         System.out.println("car1 toString to see if passenger was successfully picked up");
         System.out.println(car1);
-        System.out.println("moving car since no more passengers to pick up");
+        System.out.println("moving car since no more passengers to pick up \n");
         car1.move();
 
         System.out.println("Testing car at station 2: picking up passenger \n ----------------------------------------------------------------");
-        System.out.println("adding passenger to s3");
-        s4.addPassenger(p4);
-        System.out.println("Printing out s3 to see if there are any passengers");
+        System.out.println("adding passenger to station");
+        System.out.println("Printing out station to see if there are any passengers");
         System.out.println(s3);
         System.out.println("Picking up passenger");
         System.out.println(car2.pickUpPassengers(s3));
@@ -68,7 +67,8 @@ public class RideShareRunner {
         car1.move();
 
         System.out.println("Testing car at station 3: picking up passenger \n ----------------------------------------------------------------");
-        System.out.println("Printing out s3 to see if there are any passengers");
+        System.out.println("Printing out station to see if there are any passengers");
+        s4.addPassenger(p5);
         System.out.println(s4);
         System.out.println("Picking up passenger");
         System.out.println(car2.pickUpPassengers(s4));
@@ -82,6 +82,34 @@ public class RideShareRunner {
         car2.move();
         System.out.println("Continuing to move car1 since it is full and not at destination");
         car1.move();
+
+        System.out.println("Testing car at station 4: moving backwards \n ----------------------------------------------------------------");
+        System.out.println("Printing out station to see if there are any passengers");
+        System.out.println(s5);
+        System.out.println("Picking up passenger");
+        System.out.println(car2.pickUpPassengers(s5));
+        System.out.println(car1.pickUpPassengers(s5));
+        System.out.println("there is a car at s5, so we expect it to not pick up anything but move in the opposite direction back to station 0");
+        System.out.println(car3.pickUpPassengers(s5));
+        System.out.println("should be no passengers to pick up");
+        System.out.println(s5);
+        System.out.println("Moving all the cars: c1 and c2 should move and not move again after this move");
+        car2.move();
+        car1.move();
+        System.out.println("moving car3: should move to station3");
+        car3.move();
+
+        System.out.println("Testing car3 at station 3: moving backwards and picking up person\n ----------------------------------------------------------------");
+        System.out.println("printing out station - should have 1 passenger");
+        System.out.println(s4);
+        System.out.println("picking up passenger");
+        System.out.println(car3.pickUpPassengers(s4));
+        System.out.println("checking station to make sure that passenger was successfully picked up");
+        System.out.println(s4);
+        System.out.println("moving cars - c3 should move backwards and c1 and c2 should not move at all");
+        car1.move();
+        car2.move();
+        car3.move();
 
 
 

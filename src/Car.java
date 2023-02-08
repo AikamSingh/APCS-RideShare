@@ -78,10 +78,29 @@ public class Car {
         int numPassengers = 0;
         if(riders.size() < MAX){
             if(station.hasPassenger()){
-                for(int i = 0; i < station.getNumPassengers(); i++){
-                    riders.add(station.getWaitingPassengers().get(i));
-                    numPassengers++;
-                    station.removePassenger(station.getWaitingPassengers().get(i));
+                if(dest > loc){
+                    for(int i = 0; i < station.getNumPassengers(); i++){
+                        if(station.getWaitingPassengers().get(i).getDestination() > station.getWaitingPassengers().get(i).getStation()){//person going in positive direction
+                            riders.add(station.getWaitingPassengers().get(i));
+                            numPassengers++;
+                            station.removePassenger(station.getWaitingPassengers().get(i));
+                        }
+                        else{
+                            return "person is not going in the same direction";
+                        }
+                    }
+                }
+                else{
+                    for(int i = 0; i < station.getNumPassengers(); i++){
+                        if(station.getWaitingPassengers().get(i).getDestination() < station.getWaitingPassengers().get(i).getStation()){//person going in positive direction
+                            riders.add(station.getWaitingPassengers().get(i));
+                            numPassengers++;
+                            station.removePassenger(station.getWaitingPassengers().get(i));
+                        }
+                        else{
+                            return "person is not going in the same direction";
+                        }
+                    }
                 }
                 return "picked up " + numPassengers + " passengers from station " + loc + ".";
             }
@@ -95,13 +114,25 @@ public class Car {
     }
 
     public String move(){
-        if(loc != dest){
-            loc++;
-            return "moved 1 station";
+        if(loc > dest){
+            if(loc != dest){
+                loc--;
+                return "moved 1 station";
+            }
+            else{
+                return "car already at destination";
+            }
         }
         else{
-            return "car already at destination";
+            if(loc != dest){
+                loc++;
+                return "moved 1 station";
+            }
+            else{
+                return "car already at destination";
+            }
         }
+
     }
 
     public String toString(){
