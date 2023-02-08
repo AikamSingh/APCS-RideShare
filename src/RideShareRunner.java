@@ -8,6 +8,8 @@
 public class RideShareRunner {
     public static void main(String[] args) {
         int NUMBER_OF_ITERATIONS = 5;
+        int MAX_NUM_CARS = 20;
+        int MAX_NUM_PEOPLE = 200;
 
         //creating 31 stations
         int numStations = 31;
@@ -17,7 +19,7 @@ public class RideShareRunner {
         }
 
         //creating cars
-        int numCars = (int) (Math.random() * 10) + 1;
+        int numCars = (int) (Math.random() * MAX_NUM_CARS) + 1;
         int dest;
         int loc;
         Car[] cars = new Car[numCars];
@@ -31,7 +33,7 @@ public class RideShareRunner {
         System.out.println("-----------------------------------------------------\n");
 
         //creating passengers
-        int numPass = (int) (Math.random() * 50) + 1;
+        int numPass = (int) (Math.random() * MAX_NUM_PEOPLE) + 1;
         int destPass;
         int locPass;
         System.out.println("Printing out all passengers created and their information: \n");
@@ -77,7 +79,8 @@ public class RideShareRunner {
         double avg = total/31.0;
         avg = Math.round(avg * 100)/100.0;
 
-        System.out.println("Average revenue per mile: " + avg);
+        System.out.println("Assuming $1 per mile per passenger...");
+        System.out.println("Average revenue per mile: $" + avg);
 
 
     }
