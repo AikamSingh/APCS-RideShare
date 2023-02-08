@@ -117,6 +117,9 @@ public class Car {
         if(loc > dest){
             if(loc != dest){
                 loc--;
+                if(riders.size() != 0){
+                    passengerMiles++;
+                }
                 return "moved 1 station";
             }
             else{
@@ -126,6 +129,9 @@ public class Car {
         else{
             if(loc != dest){
                 loc++;
+                if(riders.size() != 0){
+                    passengerMiles++;
+                }
                 return "moved 1 station";
             }
             else{

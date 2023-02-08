@@ -50,18 +50,18 @@ public class Station {
     }
 
     public String toString(){
-        String result = "Station #" + stationNum + " with size "+ passengers.size() + ":\n";
+        String result = "Station #" + stationNum + " with size "+ passengers.size() + "[";
 
         if(passengers.size() == 0){
-            result += "no passengers";
+            result += "no passengers]";
         }
 
         for(int i = 0; i < passengers.size(); i++){
             if(i < passengers.size() - 1){
-                result += "passenger #" + i + " with destination " + passengers.get(i).getDestination() + ", \n";
+                result += "passenger #" + i + ": destination=" + passengers.get(i).getDestination() + ", ";
             }
             else{
-                result += "passenger #" + (i + 1) + " with destination " + passengers.get(i).getDestination();
+                result += "passenger #" + (i + 1) + ": destination=" + passengers.get(i).getDestination() + "]";
             }
 
         }
