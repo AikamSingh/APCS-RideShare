@@ -7,8 +7,8 @@
 
 public class RideShareRunner {
     public static void main(String[] args) {
-        int NUMBER_OF_ITERATIONS = 5;
-        int MAX_NUM_CARS = 20;
+        int NUMBER_OF_ITERATIONS = 10;
+        int MAX_NUM_CARS = 10;
         int MAX_NUM_PEOPLE = 200;
 
         //creating 31 stations
@@ -68,15 +68,23 @@ public class RideShareRunner {
         System.out.println("-----------------------------------------------------\n");
 
         System.out.println("Getting total passenger miles...");
-        int total = 0;
+        int totalPass = 0;
         for(Car c : cars){
-            total += c.getPassengerMiles();
+            totalPass += c.getPassengerMiles();
         }
-        System.out.println("TOTAL PASSENGER MILES: " + total + "\n");
+        System.out.println("TOTAL PASSENGER MILES: " + totalPass + "\n");
         System.out.println("-----------------------------------------------------\n");
 
-        System.out.println("Calculating average revenue per mile...");
-        double avg = total/31.0;
+        System.out.println("Getting total car miles driven...");
+        int totalCar = 0;
+        for(Car c : cars){
+            totalCar += c.getCarMiles();
+        }
+        System.out.println("TOTAL CAR MILES: " + totalCar + "\n");
+        System.out.println("-----------------------------------------------------\n");
+
+        System.out.println("Calculating average revenue per mile(passengerMiles/carMiles)...");
+        double avg = (totalPass * 1.0)/totalCar ;
         avg = Math.round(avg * 100)/100.0;
 
         System.out.println("Assuming $1 per mile per passenger...");

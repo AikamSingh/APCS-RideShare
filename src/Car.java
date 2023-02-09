@@ -13,12 +13,14 @@ public class Car {
     private int dest;
     private int loc;
     private int passengerMiles;
+    private int carMiles;
 
     public Car(int dest, int loc){
         riders = new ArrayList<>();
         this.dest = dest;
         this.loc = loc;
         passengerMiles = 0;
+        carMiles = 0;
     }
 
     public int getNumPassengers(){
@@ -35,6 +37,9 @@ public class Car {
     public int getPassengerMiles(){
         return passengerMiles;
     }
+    public int getCarMiles(){
+        return carMiles;
+    }
 
     public String getPassengers(){
         String result = "Passengers: ";
@@ -45,9 +50,7 @@ public class Car {
         return result;
     }
 
-    public void setPassengerMiles(){
 
-    }
 
     public String addPassenger(Passenger passenger){
         if(riders.size() < MAX){
@@ -120,6 +123,7 @@ public class Car {
                 if(riders.size() != 0){
                     passengerMiles++;
                 }
+                carMiles++;
                 return "moved 1 station";
             }
             else{
@@ -132,6 +136,7 @@ public class Car {
                 if(riders.size() != 0){
                     passengerMiles++;
                 }
+                carMiles++;
                 return "moved 1 station";
             }
             else{
